@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from typing import Optional
 
 app= FastAPI(
-    title='Mi Segunda API 196',
+    title='API de Gestión de Tareas 196',
     description='Noel Betanzos De La Cruz',
     version= '1.0.0.0'
 )
@@ -18,4 +18,10 @@ tareas = [
     {"id": 9, "titulo": "Enviar reportes", "descripcion": "Subir informe mensual a la plataforma", "vencimiento": "21-02-24", "estado": "completada"},
     {"id": 10, "titulo": "Revisar correos", "descripcion": "Responder a los pendientes del equipo de desarrollo", "vencimiento": "18-02-24", "estado": "completada"}
 ]
+
+#endPoint Obtener todas las tareas.
+@app.get('/tareas', tags=['To-Do List'])
+def ObtenerTodos():
+    return {"Tareas Registrados. ": tareas}
+
 
