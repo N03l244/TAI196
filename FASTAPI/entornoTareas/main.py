@@ -32,3 +32,12 @@ def ObtenerTodos(id:int):
         if tarea["id"] == id:
             return {"Tarea encontrada": tarea}
     raise HTTPException(status_code=404, detail="Tarea no encontrado")
+
+#endPoint para Crear una nueva tarea.
+@app.post('/tareas/',tags=['To-Do List'])
+def AgregarUsuario(tareanuevo: dict ):
+    for tarea in tareas: 
+        if tarea["id"] == tareanuevo.get("id"): 
+            raise HTTPException(status_code=400, detail="El id ya esta registrado") 
+    tareas.append(tareanuevo) 
+    return tareanuevo 
