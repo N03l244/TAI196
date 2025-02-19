@@ -41,3 +41,12 @@ def AgregarUsuario(tareanuevo: dict ):
             raise HTTPException(status_code=400, detail="El id ya esta registrado") 
     tareas.append(tareanuevo) 
     return tareanuevo 
+
+#endPoint para Actualizar una tarea existente.
+@app.put("/tareas/{id}", tags=["To-Do List"])
+def actualizar(id: int, tarea_update: dict):
+    for index, tra in enumerate(tareas):
+        if tra["id"] == id:
+            tareas[index].update(tarea_update)
+            return tareas[index]
+    raise HTTPException(status_code=404, detail="ID no encontrado")
