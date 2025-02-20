@@ -27,7 +27,7 @@ def ObtenerTodos():
 
 #endPoint Obtener la tarea por ID.
 @app.get('/tareas/{id}', tags=['To-Do List'])
-def ObtenerTodos(id:int):
+def ObtenerTodosID(id:int):
     for tarea in tareas:
         if tarea["id"] == id:
             return {"Tarea encontrada": tarea}
@@ -57,5 +57,5 @@ def eliminar(id: int):
     for index, tra in enumerate(tareas):
         if tra["id"] == id:
             tareas.pop(index)
-            return {"Usuario eliminado":id}
+            return {"Tarea eliminado":id}
     raise HTTPException(status_code=404, detail="ID no encontrado")
