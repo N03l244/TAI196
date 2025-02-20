@@ -50,3 +50,12 @@ def actualizar(id: int, tarea_update: dict):
             tareas[index].update(tarea_update)
             return tareas[index]
     raise HTTPException(status_code=404, detail="ID no encontrado")
+
+#endPoint para Eliminar una tarea.
+@app.delete("/tareas/{id}", tags=["To-Do List"])
+def eliminar(id: int):
+    for index, tra in enumerate(tareas):
+        if tra["id"] == id:
+            tareas.pop(index)
+            return {"Usuario eliminado":id}
+    raise HTTPException(status_code=404, detail="ID no encontrado")
