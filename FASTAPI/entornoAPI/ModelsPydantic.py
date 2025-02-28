@@ -6,3 +6,6 @@ class modelUsuario(BaseModel):
     edad:int = Field(...,gt=0,le=133, description="La edad debe de ser mayor que 0")
     corre: EmailStr= Field(...,example="algo@algo.com", description="Revise la direccion de correo, debe ser un formato valido.")
 
+class modelAuth(BaseModel):
+    correo: EmailStr
+    passw:str = Field(..., min_length=8, strip_whitespace=True, description="La contraseña minima de 8 caracteres")
