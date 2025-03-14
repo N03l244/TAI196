@@ -25,7 +25,7 @@ def obtener_envio(CP: str):
 
 # Endpoint para actualizar un envío existente
 @app.put('/paquetes/{CP}', response_model=modelenvio, tags=['Envios'])
-def actualizar_envio(CP:modelenvio, envio_update: modelenvio):
+def actualizar_envio(CP: str, envio_update: modelenvio):
     for index, envio in enumerate(paquetes):
         if envio["CP"] == CP:
             paquetes[index] = envio_update.dict()  # Convertir Pydantic a diccionario
