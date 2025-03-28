@@ -5,19 +5,22 @@ from typing import Optional, List
 from ModelsPydantic import modelUsuario, modelAuth
 from tokenGen import createToken
 from middlewares import BearerJWT
+from DB.conexion import Session,engine, Base
+from models.modelsDB import User
 
 app= FastAPI(
     title='Mi primer API 196',
     description='Noel Betanzos De La Cruz',
     version= '1.1.1'
 )
-
+#Se encarga de levantar las Tables de la DB
 usuarios=[
     {"id":1, "nombre":"Noel", "edad": 20, "correo":"Noel@example.com"},
     {"id":2, "nombre":"Ivan", "edad": 37, "correo":"Ivan@example.com"},
     {"id":3, "nombre":"Sergio", "edad": 20, "correo":"Sergio@example.com"},
     {"id":4, "nombre":"Preciado", "edad": 21, "correo":"Preciado@example.com"},
 ]
+
 
 @app.get('/',tags=['Inicio'])
 def main():
